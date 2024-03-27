@@ -10,8 +10,68 @@ app.listen(PORT);
 console.log('Server is running on port', PORT);
 
 app.get('/', (req, res) => {
-    res.status(200).json({ message: "Hello!" });
+    res.status(200).send(`
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>File Handling with Express</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    margin: 0;
+                    padding: 0;
+                    background-color: #f0f0f0;
+                }
+                .container {
+                    max-width: 800px;
+                    margin: 50px auto;
+                    padding: 20px;
+                    background-color: #fff;
+                    border-radius: 5px;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                }
+                h1, p {
+                    text-align: center;
+                }
+                .endpoint {
+                    margin-top: 30px;
+                    display: flex;
+                    justify-content: space-around;
+                }
+                .endpoint a {
+                    display: block;
+                    width: 150px;
+                    padding: 10px 20px;
+                    text-align: center;
+                    text-decoration: none;
+                    color: #fff;
+                    background-color: #007bff;
+                    border-radius: 5px;
+                    transition: background-color 0.3s ease;
+                }
+                .endpoint a:hover {
+                    background-color: #0056b3;
+                }
+            </style>
+        </head>
+        <body>
+
+        <div class="container">
+            <h1>File Handling with Express</h1>
+            <p>Use the following endpoints to interact with the server:</p>
+            <div class="endpoint">
+                <a href="/write">Write Timestamp</a>
+                <a href="/read">Read File</a>
+            </div>
+        </div>
+
+        </body>
+        </html>
+    `);
 });
+
 
 app.get('/write', (req, res) => {
     try {
